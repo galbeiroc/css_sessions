@@ -1,0 +1,29 @@
+/* 
+* {
+  color: red;
+}
+
+.title {
+  color: orange;
+  font-size: 30px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#title {
+  color: steelblue;
+  font-size: 50px;
+} 
+*/
+
+.primary .title {
+  color: aqua;
+  font-size: 50px;
+}
+
+.primary > .title {
+  color: green;
+  font-size: 40px;
+}
