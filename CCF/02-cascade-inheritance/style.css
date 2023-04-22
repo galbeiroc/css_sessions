@@ -1,0 +1,12 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  color: tomato;
+}
+
+a {
+  color: inherit;
+}
+
+/* h2 {
+  font-family: cursive;
+} */
