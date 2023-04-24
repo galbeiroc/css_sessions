@@ -1,0 +1,9 @@
+.element {
+  box-sizing: border-box;
+  width: 250px;
+  height: 250px;
+  background-color: purple;
+  border: 10px steelblue solid;
+  padding: 20px;
+  margin: 0 auto;
+}

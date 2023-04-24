@@ -1,0 +1,32 @@
+/* .box {   
+  background-color: steelblue;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: red;
+}
+
+.box-1 {
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+} */
+.main {
+  background-color: blue;
+  color: aliceblue;
+  margin-bottom: 50px;
+  border: 1px black solid; /* */
+}
+
+.title {
+  margin-top: 40px;
+}
+
+.footer {
+  background-color: red;
+  color: aliceblue;
+  margin-top: 50px;
+}
