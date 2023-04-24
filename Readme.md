@@ -242,4 +242,253 @@ a {
 }
 ```
 
-<img src='./assets/inheritance-2.png' alt="inheritance-2" />
+content
+
+
+### Box Model
+Todos elementos son tratados como cajas. Esto lleva al box model el cual se divide en capas. Cada capa nos permite manipular una caracteristica de las cajas en CSS.
+
+```html
+<body>
+  <div class="box">Hello World!. AD LOREM IPSUM GENERADOR Lorem ipsum dolor sit amet.</div>
+</body>
+```
+
+1. content: Permite que aparezca en el navegador
+```css
+.box {   
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+}
+```
+
+<img src='./assets/content.png' alt="content" />
+
+2. **padding**: Permite crear un espacio entre el borde y el contenido. Modifica el tamaño del elemento.
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px;
+  /*
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  */
+}
+```
+
+2.1 shorthand `padding` toma el sentido de la manecillas del reloj `top right bottom left`.
+`padding: 30px 20px 10px 20px;`
+
+Cuando se definen dos valores a la propiedad. Toma el primer valor para definir `top bottom` y el segundo para `right left`.
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px 20px;
+}
+```
+
+<img src='./assets/padding-1.png' alt="padding-1" />
+
+
+Cuando se definen tres valores `top right bottom`, el cuarto valor lo tamaría de su contrario que es `right`.
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px 10px 15px;
+}
+```
+
+<img src='./assets/padding-2.png' alt="padding-2" />
+
+3. **border**: Permite definir la linea de borde del elemento. Modifica el tamaño del elemento. Es la ultima que lo modifica.
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px;
+  border-color: red;
+  border-width: 10px;
+  border-style: solid;
+}
+```
+
+3.1 **border-width**: Define el ancho del borde. Al igual que el `padding`, es un shorthand toma el sentido de la manecillas del reloj `top right bottom left`. Por ejemplo: `border-width: 20px 10px 30px 15px;`. Tambien se compone de cuatro propiedades:
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px;
+  border-color: red;
+  border-style: solid;
+  border-top-width: 25px; /* define ancho para el borde de arriba */
+  border-right-width: 10px; /* define ancho para el borde de la derecha */
+  border-bottom-width: 20px; /* define ancho para el borde de la izquierda */
+  border-left-width: 15px; /* define ancho para el borde de abajo */
+}
+```
+
+<img src='./assets/border-width.png' alt="border width" />
+
+3.2 **border-style**: Define los estilos de linea del borde. Igualmente es un shorthand toma el sentido de la manecillas del reloj `top right bottom left`. . Por ejemplo: `border-style: double dashed groove dotted;`. Tambien se compone de cuatro propiedades:
+
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px 10px 15px;
+  border-color: red;
+  border-width: 10px;
+  border-top-style: double;
+  border-right-style: dashed;
+  border-bottom-style: groove;
+  border-left-style: dotted;
+}
+```
+
+<img src='./assets/border-style.png' alt="border style" />
+
+3.3 **border-color**: Define los estilos de color del borde. Igualmente es un shorthand toma el sentido de la manecillas del reloj `top right bottom left`. . Por ejemplo: `border-color: red yellow green purple;`. Tambien se compone de cuatro propiedades:
+```css
+.box {   
+  background-color: steelblue;
+  width: 200px;
+  height: 200px;
+  padding: 30px 10px 15px;
+  border-style: solid;
+  border-width: 10px;
+  border-top-color: red;
+  border-right-color:  yellow;
+  border-bottom-color: green;
+  border-left-color: purple;
+}
+```
+
+<img src='./assets/border-color.png' alt="border color" />
+
+3.4 shorthand **border** `border: red 10px solid;` No importa el orden.
+
+<img src='./assets/border.png' alt="border" />
+
+4. **margin**: Es la capa externa del elemento. No modifica el tamaño del elemento.
+
+```html
+<body>
+  <div class="box">Hello World!. AD LOREM IPSUM GENERADOR Lorem ipsum dolor sit amet.</div>
+  <div class="box box-1">Hello World!. AD LOREM IPSUM GENERADOR Lorem ipsum dolor sit amet.</div>
+</body>
+```
+
+```css
+.box {
+  background-color: steelblue;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: red;
+}
+
+.box-1 {
+  margin: 80px;
+}
+```
+
+4.1 shorthand `margin` toma el sentido de la manecillas del reloj `top right bottom left`. `margin: 20px 10px 10px 10px;`. Tambien se compone de cuatro propiedades:
+```css
+.box-1 {
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+```
+
+En `margin` se aplican las misma reglas que en `padding` encuanto shorthand.
+*Nota: margin acepta el valor `auto`, pero solo funciona de manera horizontal. para las propiedades margin-top y margin-bottom, no toman el valor `auto`. Para centrar se asignan valores verticales: `margin: 0 auto;`*
+
+<img src='./assets/margin.png' alt="margin" />
+
+4.2 Los colapsos de margenes se dan entre `margin-top` y `margin-bottom`.
+Se recomienda tener una capa (`padding`, `border`) entre un parent y child elemento, mas que todo en el parent.
+```html
+<body>
+  <main class="main">
+    <h2 class="title">Use H2</h2>
+  </main>
+  <footer class="footer">
+    <h2>Footer</h2>
+  </footer>
+</body>
+```
+```css
+.main {
+  background-color: blue;
+  color: aliceblue;
+  margin-bottom: 50px;
+  border: 1px black solid; /* fix colapso de margenes*/
+}
+
+.title {
+  margin-top: 40px;
+}
+
+.footer {
+  background-color: red;
+  color: aliceblue;
+  margin-top: 50px;
+}
+```
+
+<img src='./assets/result-colapso-margnes.png' alt="colapso-margnes" />
+
+### Box-Sizing
+Define el comportamiento de las cajas. por defecto es `box-sizing: content-box;` no toma como tamaño final `width` y `height`, sino como tamaño la capa de contenido, tambien el `border` y el `padding`.
+
+```html
+<div class="element"></div>
+```
+
+```css
+.element {
+  box-sizing: content-box;
+  width: 250px;
+  height: 250px;
+  background-color: purple;
+  border: 10px steelblue solid;
+  padding: 20px;
+  margin: 0 auto;
+}
+```
+
+<img src='./assets/content-box.png' alt="content box" />
+
+* border-box: asigna primero valores border, padding y lo que sobre se lo dará al contenido.
+
+```css
+.element {
+  box-sizing: border-box;
+  width: 250px;
+  height: 250px;
+  background-color: purple;
+  border: 10px steelblue solid;
+  padding: 20px;
+  margin: 0 auto;
+}
+```
+
+<img src='./assets/border-box.png' alt="border box" />
+
+Si queremos aplicar border-box a todos los elementos podemos utlizar el selector universal `* {}`
