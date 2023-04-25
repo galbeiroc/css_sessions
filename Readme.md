@@ -492,3 +492,131 @@ Define el comportamiento de las cajas. por defecto es `box-sizing: content-box;`
 <img src='./assets/border-box.png' alt="border box" />
 
 Si queremos aplicar border-box a todos los elementos podemos utlizar el selector universal `* {}`
+
+### Position
+La propiedad `position` in CSS establece cómo se posiciona un elemento en un documento. Las propiedades `top`, `right`, `bottom` y `left` determinan la posición final del elemento.
+
+```html
+<body>
+  <div class="square"></div>
+  <div class="rectangle"></div>
+</body>
+```
+
+* **static** El elemento se posiciona según el flujo normal del documento. Las propiedades `top`, `right`, `bottom`, `left` y `z-index` no tienen efecto. Este es el valor por defecto.
+```css
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: steelblue;
+  position: static;
+  left: 20px;
+}
+
+.rectangle {
+  width: 400px;
+  height: 200px;
+  background-color: red;
+  margin-top: 5px;
+}
+```
+<img src='./assets/static.png' alt="static" />
+
+* **relative** El elemento se posiciona según el flujo normal del documento, y luego se desplaza respecto a sí mismo en función de los valores de `top`, `right`, `bottom` y `left`. El desplazamiento no afecta a la posición de ningún otro elemento; por lo tanto, el espacio dado al elemento en el diseño de la página es el mismo que si la posición fuera estática.
+
+```css
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: steelblue;
+  position: relative;
+  left: 100px;
+  top: 50px;
+}
+
+.rectangle {
+  width: 400px;
+  height: 200px;
+  background-color: red;
+  margin-top: 5px;
+}
+```
+
+<img src='./assets/relative.png' alt="relative" />
+
+
+* **absolute** El elemento se elimina del flujo normal del documento y no se crea ningún espacio para él en el diseño de página. Se posiciona en relación a su ancestro posicionado más cercano, si existe; de lo contrario, se posiciona en relación al bloque contenedor inicial. Su posición final viene determinada por los valores de `top`, `right`, `bottom` y `left`.
+
+Para este ejemplo el circulo se posiciona en base a su contenedor que es el `body`.
+```html
+<body>
+  <div class="square"></div>
+  <div class="circle"></div>
+</body>
+```
+
+```css
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: steelblue;
+  position: relative;
+  left: 150px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+```
+
+<img src='./assets/absolute-1.png' alt="absolute 1" />
+
+Si queremos que el circulo se posicione dentro del cuadrado.
+```html
+<body>
+  <div class="square">
+    <div class="circle"></div>
+  </div>
+</body>
+```
+
+<img src='./assets/absolute-2.png' alt="absolute 2" />
+
+* **fixed** El elemento se elimina del flujo normal del documento y no se crea ningún espacio para él en el diseño de la página. Se posiciona en relación con el bloque contenedor inicial establecido por la viewport. Su posición final viene determinada por los valores de `top`, `right`, `bottom` y `left`.
+
+```html
+<body>
+  <div class="square"></div>
+  <div class="rectangle"></div>
+  <div class="rectangle"></div>
+</body>
+```
+
+```css
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: steelblue;
+  position: fixed;
+  left: 110px;
+  top: 50px;
+}
+
+.rectangle {
+  width: 400px;
+  height: 400px;
+  background-color: red;
+}
+```
+
+<img src='./assets/fixed.png' alt="fixed" />
+
+* **sticky** El elemento se posiciona de acuerdo con el flujo normal del documento y, a continuación, se desplaza con respecto a su ancestro de desplazamiento más cercano y al bloque que lo contiene (ancestro a nivel de bloque más cercano), incluidos los elementos relacionados con tablas, en función de los valores de `top`, `right`, `bottom` y `left`. El desplazamiento no afecta a la posición de ningún otro elemento.
+
+<img src='./assets/sticky.gif' alt="sticky" />
