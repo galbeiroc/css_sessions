@@ -1,0 +1,13 @@
+.square {
+  width: 400px;
+  height: 50px;
+  background-color: steelblue;
+  position: sticky;
+  top: 0;
+}
+
+.rectangle {
+  width: 400px;
+  height: 200px;
+  background-color: red;
+}
