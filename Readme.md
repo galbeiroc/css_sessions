@@ -619,4 +619,143 @@ Si queremos que el circulo se posicione dentro del cuadrado.
 
 * **sticky** El elemento se posiciona de acuerdo con el flujo normal del documento y, a continuación, se desplaza con respecto a su ancestro de desplazamiento más cercano y al bloque que lo contiene (ancestro a nivel de bloque más cercano), incluidos los elementos relacionados con tablas, en función de los valores de `top`, `right`, `bottom` y `left`. El desplazamiento no afecta a la posición de ningún otro elemento.
 
+```html
+<body>
+  <div class="rectangle">other 0</div>
+  <div class="square">sticky 0</div>
+  <div class="rectangle">other 1</div>
+  <div class="rectangle">other 2</div>
+  <div class="rectangle">other 3</div>
+  <div class="square">sticky 1</div>
+  <div class="rectangle">other 4</div>
+  <div class="rectangle">other 5</div>
+  <div class="rectangle">other 6</div>
+</body>
+```
+
+```css
+.square {
+  width: 400px;
+  height: 50px;
+  background-color: steelblue;
+  position: sticky;
+  top: 0;
+}
+
+.rectangle {
+  width: 400px;
+  height: 200px;
+  background-color: red;
+}
+```
+
 <img src='./assets/sticky.gif' alt="sticky" />
+
+### Display
+La propiedad CSS display establece si un elemento se trata como un elemento de `block` o `inline` y el diseño utilizado para sus hijos, como flow layout, `grid` o `flex`.
+la propiedad `display` establece los tipos de visualización interior y exterior de un elemento. El tipo externo establece la participación de un elemento en la disposición de flujo; el tipo interno establece la disposición de los elementos hijos.
+
+##### Exterior
+* **block** El elemento genera una caja de elemento de bloque, generando saltos de línea tanto antes como después del elemento cuando está en el flujo normal. Los elementos ocupan el 100% del ancho. Esta dado por defecto. Estos son algunos de los elementos que tienen por defecto `block`. `div`, `hr`, `p`, `h1...h6`, `table`, `canvas` entre otros.
+
+```html
+<body>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</body>
+```
+
+```css
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: steelblue;
+  margin-top: 5px;
+}
+```
+
+<img src='./assets/block.png' alt="block" />
+
+* **inline** Los elementos `inline` no admiten dimensiones (`width`, `height`), pero si admiten `margin`, `padding` y `border`, solo ocupan lo que tengan en su contenido. Estos son algunos de los elementos que tienen por defecto `inline`. `a`, `span`, `img`, `b`, `small`, `sub`, `sup` entre otros.
+
+```html
+<body>
+  <a href="#">Link a</a>
+  <span>Use Span</span>
+  <a href="#">Link b</a>
+</body>
+```
+
+```css
+a {
+  background-color: aqua;
+  padding: 5px;
+}
+
+span {
+  color: red;
+  margin: 0 20px;
+}
+```
+
+<img src='./assets/inline.png' alt="inline" />
+
+*Nota: La única razón por la que tenemos esas diferencias entre los distintos tipos de elementos HTML (block vs inline) es porque el navegador carga su propio CSS.*
+
+* **inline-block** Es una combinación entre los dos tipos de elementos mencionados anteriormente (block e inline), los elementos con el valor inline-block admiten dimensiones pero todavía son elementos de línea, es decir estarán colocados uno al lado de otro.
+
+```html
+<body>
+  <a href="#">Link a</a>
+  <span>Use Span</span>
+  <a href="#">Link b</a>
+</body>
+```
+
+```css
+a {
+  background-color: aqua;
+  padding: 5px;
+  display: inline-block;
+  width: 150px;
+}
+
+span {
+  color: red;
+  margin: 0 20px;
+  display: inline-block;
+  width: 100px;
+}
+```
+<img src='./assets/inline-block.png' alt="inline-block" />
+
+* **none** Desactiva la visualización de un elemento para que no tenga ningún efecto sobre el diseño (el documento se renderiza como si el elemento no existiera).
+
+```html
+<body>
+  <a href="#">Link a</a>
+  <span>Use Span</span>
+  <a href="#">Link b</a>
+</body>
+```
+
+```css
+a {
+  background-color: aqua;
+  padding: 5px;
+  display: inline;
+}
+
+span {
+  color: red;
+  margin: 0 20px;
+  display: none;
+  width: 100px;
+}
+```
+
+<img src='./assets/display-none.png' alt="display-none" />
+
+##### Interior
+Los últimos valores mas importantes de la propiedad display es `grid` y `flex`.
