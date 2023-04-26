@@ -1,0 +1,23 @@
+*{
+  box-sizing: border-box;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: steelblue;
+  margin-top: 5px;
+  display: block;
+}
+
+a {
+  background-color: aqua;
+  padding: 5px;
+  display: inline;
+}
+span {
+  color: red;
+  margin: 0 20px;
+  display: none;
+  width: 100px;
+}
