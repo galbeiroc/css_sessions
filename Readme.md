@@ -759,3 +759,399 @@ span {
 
 ##### Interior
 Los últimos valores mas importantes de la propiedad display es `grid` y `flex`.
+
+### Flexbox
+El módulo Flexible Box Layout facilita el diseño de una estructura de diseño flexible y adaptable sin necesidad de utilizar flotadores ni posicionadores. Flexbox es un módulo completo y no una sola propiedad, que implica un montón de cosas, incluyendo todo su conjunto de propiedades. Algunos de ellos deben establecerse en el contenedor (elemento padre, denominado "contenedor flexible"), mientras que otros deben establecerse en los elementos hijos (denominados "elementos flexibles"). Los elementos se dispondrán siguiendo main axis (principal) o cross axis (secundario)
+`display: flex;`
+
+##### Flexbox properties
+* `flex-direction` define en qué dirección el contenedor quiere apilar los elementos flex. Piensa que los elementos flexibles se disponen principalmente en rows horizontales o columns verticales.
+
+```html
+<div class="container">
+  <div class="item item1">#1</div>
+  <div class="item item2">#2</div>
+  <div class="item item3">#3</div>
+</div>
+```
+
+```css
+*{
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+}
+
+.item {
+  width: 120px;
+  height: 120px;
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 110px;
+}
+
+.item1 {
+  background-color: steelblue;
+}
+
+.item2 {
+  background-color: salmon;
+}
+
+.item3 {
+  background-color: purple;
+}
+```
+
+* **row** (por defecto): de izquierda a derecha en 'ltr'; de derecha a izquierda en 'rtl'
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+}
+```
+
+<img src='./assets/row.png' alt="row" />
+
+* **row-reverse**: de derecha a izquierda en 'ltr'; de izquierda a derecha en 'rtl'
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row-reverse;
+}
+```
+
+<img src='./assets/row-reverse.png' alt="row-reverse" />
+
+* **column**: igual que `row` pero de arriba a abajo
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+```
+
+<img src='./assets/column.png' alt="column" />
+
+* **column-reverse**: igual que `row-reverse` pero de abajo a arriba
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column-reverse;
+}
+```
+
+<img src='./assets/column-reverse.png' alt="column-reverse" />
+
+* `flex-wrap` especifica si los elementos flex deben envolverse o no.
+Para los ejemplos se aumenta el `width: 300px;` de los items.
+
+```css
+.item {
+  width: 300px;
+  height: 120px;
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 110px;
+}
+```
+
+* **nowrap** (por defecto): todos los elementos flex estarán en una línea. Si los elementos soprepasan los elementos del main axis, estos reducen su tamaño.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: nowrap;
+}
+```
+
+<img src='./assets/nowrap.png' alt="nowrap" />
+
+* **wrap**: los elementos flex se envolverán en varias líneas, de arriba a abajo.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+<img src='./assets/wrap.png' alt="wrap" />
+
+* **wrap-reverse**: los elementos flex se envolverán en varias líneas, de abajo a arriba.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+```
+
+<img src='./assets/wrap-reverse.png' alt="wrap-reverse" />
+
+* `flex-flow` es una propiedad abreviada para establecer las propiedades `flex-direction` y `flex-wrap`.
+
+```css
+.container {
+  display: flex;
+  flex-flow: row wrap;
+}
+```
+
+* `justify-content` define la alineación a lo largo del main axis. Ayuda a distribuir el espacio libre sobrante.
+
+* **flex-start** (por defecto): los elementos se colocan hacia el principio del `flex-direction`.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-start;
+}
+```
+
+<img src='./assets/jc-flex-start.png' alt="jc-flex-start" />
+
+* **flex-end**: los elementos se colocan hacia el final del `flex-direction`.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
+}
+```
+
+<img src='./assets/jc-flex-end.png' alt="jc-flex-end" />
+
+* **center *: los elementos se centran a lo largo de la línea
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+```
+
+<img src='./assets/jc-center.png' alt="jc-center" />
+
+* **space-between**: los elementos se distribuyen uniformemente en la línea; el primer elemento está en la línea de inicio, el último en la línea final.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+<img src='./assets/space-between.png' alt="space-between" />
+
+* **space-around**: los elememtos están distribuidos uniformemente en la línea con el mismo espacio a su alrededor. Tenga en cuenta que visualmente los espacios no son iguales, ya que todos los elementos tienen el mismo espacio a ambos lados.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
+```
+
+<img src='./assets/space-around.png' alt="space-around" />
+
+* **space-evenly**: los elementos se distribuyen de modo que el espacio entre dos elementos cualesquiera es igual.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+}
+```
+
+<img src='./assets/space-evenly.png' alt="space-evenly" />
+
+* `align-items` define la alineación a lo largo del cross axis.
+
+* **stretch** (por defecto): estirar hasta llenar el contenedor (respetando min-ancho/máx-ancho). No se debe tener valor definido la propiedad `height` cuando el *flex-direction* es `row` y `width` para cuando el *flex-direction* es `column`.
+
+Para los ejemplos se aumenta el `width: 300px;` de los items.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: stretch;
+```
+
+```css
+.item {
+  width: 300px;
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 110px;
+}
+```
+
+<img src='./assets/strech.png' alt="stretch" />
+
+* **flex-start**: los elementos se colocan al principio del cross axis.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: flex-start;
+```
+
+<img src='./assets/ai-flex-start.png' alt="ai-flex-start" />
+
+* **flex-end**: los elementos se colocan al final del cross axis.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: flex-end;
+```
+
+<img src='./assets/ai-flex-end.png' alt="ai-flex-end" />
+
+* **center**:: los elementos se centran en el cross axis.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+```
+
+<img src='./assets/ai-center.png' alt="ai-center" />
+
+* **baseline**: los elementos se alinean de tal forma que sus líneas de base se alinean. Se alinean en base de linea inferior de los texto.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: baseline;
+```
+
+<img src='./assets/baseline.png' alt="baseline" />
+
+* `align-content` Modifica el comportamiento de la propiedad `flex-wrap`.
+
+```css
+.container {
+  align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline ...;
+```
+
+**Nota**: Esta propiedad sólo tiene efecto en los contenedores flexibles multilínea, en los que `flex-wrap` está configurado como `wrap` o `wrap-reverse`.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+```
+
+<img src='./assets/align-content.png' alt="align-content" />
