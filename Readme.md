@@ -764,6 +764,7 @@ Los últimos valores mas importantes de la propiedad display es `grid` y `flex`.
 El módulo Flexible Box Layout facilita el diseño de una estructura de diseño flexible y adaptable sin necesidad de utilizar flotadores ni posicionadores. Flexbox es un módulo completo y no una sola propiedad, que implica un montón de cosas, incluyendo todo su conjunto de propiedades. Algunos de ellos deben establecerse en el contenedor (elemento padre, denominado "contenedor flexible"), mientras que otros deben establecerse en los elementos hijos (denominados "elementos flexibles"). Los elementos se dispondrán siguiendo main axis (principal) o cross axis (secundario)
 `display: flex;`
 
+#### Propiedades para el padre (Flex Container)
 ##### Flexbox properties
 * `flex-direction` define en qué dirección el contenedor quiere apilar los elementos flex. Piensa que los elementos flexibles se disponen principalmente en rows horizontales o columns verticales.
 
@@ -979,7 +980,7 @@ Para los ejemplos se aumenta el `width: 300px;` de los items.
 
 <img src='./assets/jc-flex-end.png' alt="jc-flex-end" />
 
-* **center *: los elementos se centran a lo largo de la línea
+* **center**: los elementos se centran a lo largo de la línea
 
 ```css
 .container {
@@ -1102,7 +1103,7 @@ Para los ejemplos se aumenta el `width: 300px;` de los items.
 
 <img src='./assets/ai-flex-end.png' alt="ai-flex-end" />
 
-* **center**:: los elementos se centran en el cross axis.
+* **center**: los elementos se centran en el cross axis.
 
 ```css
 .container {
@@ -1155,3 +1156,155 @@ Para los ejemplos se aumenta el `width: 300px;` de los items.
 ```
 
 <img src='./assets/align-content.png' alt="align-content" />
+
+#### Propiedades para los hijos (flex items)
+
+```html
+<div class="container">
+  <div class="item item1">#1</div>
+  <div class="item item2">#2</div>
+  <div class="item item3">#3</div>
+</div>
+```
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+}
+
+.item {
+  width: 120px;
+  height: 120px;
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 110px;
+}
+```
+
+* **order**: Permite cambiar el orden de los flex items, su valor por defecto es 0. Entre mayor sea el order se posicionará al final de los elementos.
+
+```css
+.item1 {
+  background-color: steelblue;
+  order: 2;
+}
+
+.item2 {
+  background-color: salmon;
+  order: 1;
+}
+
+.item3 {
+  background-color: purple;
+}
+```
+
+<img src='./assets/order.png' alt="flex-item order" />
+
+* **flex-grow**: Define el factor de crecimiento de todos los elementos, por defecto es 0.
+
+```css
+.item1 {
+  background-color: steelblue;
+  flex-grow: 1;
+}
+
+.item2 {
+  background-color: salmon;
+  flex-grow: 2;
+}
+
+.item3 {
+  background-color: purple;
+  flex-grow: 1;
+}
+```
+
+Por ejemplo: Si tenemos elemento y hay un `100px` este se divide en 1+2+1 => **4**, *item1* y *item3* tomaran 25px cada uno mientras que *item2* tomará 50px.
+
+<img src='./assets/flex-grow.png' alt="flex-item flex-grow" />
+
+* **flex-shrink**: Define la capacidad de un elemento flexible para encogerse si es necesario. Su valor por defecto es 1. En caso de aumentar el valor, el elemento se reducirá.
+
+```css
+.item {
+  width: 300px;
+  height: 120px;
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 110px;
+  flex-shrink: 1;
+}
+
+.item1 {
+  background-color: steelblue;
+}
+
+.item2 {
+  background-color: salmon;
+  flex-shrink: 3;
+}
+
+.item3 {
+  background-color: purple;
+}
+```
+
+<img src='./assets/flex-shrink.png' alt="flex-item flex-shrink" />
+
+* **flex-basis**: Indica el tamaño de los elementos en el main-axis. El main-axis por defecto es horizontal, es decir por defecto define `width`.
+
+```css
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 110px;
+  flex-basis: 200px;
+  width: 50px; /* NO Tomará el width */
+}
+```
+
+**Nota**: Si desearamos cambiar el `width` no se aplicaran los cambios ya que el `flex-basis` tiene mas prioridad.
+
+<img src='./assets/flex-basis.png' alt="flex-item flex-basis" />
+
+Si cambiamos el `flex-direction: column` el flex-basis sera el alto teniendo en cuenta que el main-axis puede cambiarse dependiendo del `flex-direction`.
+
+* **align-self**: Permite alinear solamente al elemento que estamos seleccionando, y permite modificarlo atraves del cross-axis o eje vertical. Tiene los mismos valores que `align-items`.
+```css
+.item1 {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+```
+
+```css
+.item1 {
+  background-color: steelblue;
+  align-self: flex-start;
+}
+
+.item2 {
+  background-color: salmon;
+  align-self: flex-end;
+}
+```
+
+<img src='./assets/align-self.png' alt="flex-item align-self" />
